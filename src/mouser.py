@@ -13,13 +13,11 @@ class DecimalEncoder(json.JSONEncoder):
 
 
 class Mouser(DistributorConnectorBase):
-    def __init__(self, api_key):
+    def __init__(self, credentials):
         DistributorConnectorBase.__init__(self, "Mouser", 20)
-        self.api_key = api_key
+        self.api_key = credentials["api_key"]
         self.api_url = "https://api.mouser.com/api/v1"
         self.manufacturers_map = {}
-        self.cached_capacitors = {}
-        self.cached_resistors = {}
 
     def get_component(self, distributor_order_number):
         """

@@ -92,9 +92,9 @@ def get_dielectric_id(dielectric, parameters):
 
 
 class TME(DistributorConnectorBase):
-    def __init__(self, token, app_secret):
+    def __init__(self, credentials):
         DistributorConnectorBase.__init__(self, "TME", 50)
-        self.tme = _api(token, app_secret)
+        self.tme = _api(credentials['token'], credentials['app_secret'])
 
     def get_component_impl(self, distributor_order_number):
         """
