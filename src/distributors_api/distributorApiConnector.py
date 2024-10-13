@@ -22,9 +22,8 @@ def load_settings():
         with open(file=settings.DISTRIBUTORS_CREDENTIALS_FILE) as f:
             distributors_api_config = json.load(f)
             if 'Mouser' in distributors_api_config:
-                __distributor_connectors['Mouser'] = Mouser(distributors_api_config['Mouser']["api_key"])
+                __distributor_connectors['Mouser'] = Mouser(distributors_api_config['Mouser'])
             elif 'TME' in distributors_api_config:
-                __distributor_connectors['TME'] = TME(distributors_api_config['TME']['token'],
-                                                      distributors_api_config['TME']['app_secret'])
+                __distributor_connectors['TME'] = TME(distributors_api_config['TME'])
     except FileNotFoundError as e:
         logger.warning(f"Unable to open distributors credential file: {e}")
